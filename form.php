@@ -5,7 +5,7 @@
 </head>
 <body>
 
-	<form id="registration" method="post" action="">
+	<form id="registration" method="post" action="registration.php">
 			<!-- Student No -->
 			<div>
 				<label for="student_no">Student No:</label>
@@ -15,7 +15,7 @@
 			<!-- Name -->
 			<div>
 				<label for="student_name">Name:</label>
-				<input type="email" id="student_name" name="name"></input>
+				<input type="text" id="student_name" name="name"></input>
 				<span class="error"></span>				
 			</div>	
 			<!--Gender -->
@@ -63,11 +63,11 @@
 			</div>	
 			<!-- Hosteller -->
 			<div>
-			<input type="checkbox" name="hosteller" value="Hosteller">Hosteller<br>
+			<input type="checkbox" name="hosteller" value="1">Hosteller<br>
 			</div>
 			<!-- Submit Button -->
 			<div id="contact_submit">				
-				<button type="submit">Submit</button>
+				<input type="submit" name="submit" value="Submit">
 			</div>
 	</form>
 
