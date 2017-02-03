@@ -37,7 +37,7 @@
 			</div>
 			<!-- Blood Group -->
 			<div>
-				<label for="student_blood">Year:</label>
+				<label for="student_blood">Blood Group:</label>
 				 <select name="bloodgroup" id="bloodgroup">
 	 				<option value="A+">A+</option>
 	 				<option value="A-">A-</option>
