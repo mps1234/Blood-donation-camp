@@ -2,21 +2,26 @@
 <html>
 <head>
 	<title>BDC</title>
+	<!-- jQuery CDN -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<!-- jQuery validation Script -->
+	<script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
 
-	<form id="registration" method="post" action="registration.php">
+	<form id="registration_form" method="POST" action="registration.php">
 			<!-- Student No -->
 			<div>
 				<label for="student_no">Student No:</label>
 				<input type="number" id="student_no" name="studentno"></input>
-				<span class="error"></span>
+				<span id="student_no_error"></span>
 			</div>
 			<!-- Name -->
 			<div>
 				<label for="student_name">Name:</label>
 				<input type="text" id="student_name" name="name"></input>
-				<span class="error"></span>				
+				<span id="student_name_error"></span>				
 			</div>	
 			<!--Gender -->
 			<div>
@@ -53,17 +58,19 @@
 			<div>
 				<label for="contact_email">Email:</label>
 				<input type="email" id="contact_email" name="email"></input>
-				<span class="error"></span>				
+				<span id="contact_email_error"></span>				
 			</div>	
 			<!-- Contact No. -->
 			<div>
 				<label for="contact_no">Contact No:</label>
-				<input type="number" id="contact_no" name="contactno"></input>
-				<span class="error"></span>				
+				<input type="number" id="contact_no" name="contactno" maxlength="11"></input>
+				<span id="contact_no_error"></span>				
 			</div>	
 			<!-- Hosteller -->
 			<div>
-			<input type="checkbox" name="hosteller" value="1">Hosteller<br>
+				<input type="radio" id="student_hosteller" name="hosteller" checked value="1">Hosteller</input>
+				<input type="radio" id="student_hosteller" name="hosteller" value="0">Day Scholar</input>
+				<span id="hosteller_error"></span>
 			</div>
 			<!-- Submit Button -->
 			<div id="contact_submit">				
