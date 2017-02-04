@@ -36,3 +36,5 @@ include('includes/dbconnect.php');
 			{
 			echo "Failure to register";
 				}
+
+				?>

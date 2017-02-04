@@ -7,9 +7,13 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<!-- jQuery validation Script -->
 	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript">
+    
+   
+	</script>
 </head>
 <body>
-
+    <div id="recordsfound" style="color:red;"></div>
 	<form id="registration_form" method="POST" action="registration.php">
 			<!-- Student No -->
 			<div>
@@ -34,10 +38,10 @@
 			<div>
 			<label for="student_year">Year:</label>
 			 <select name="year" id="student_year">
- 				<option value="1">First</option>
- 				<option value="2">Second</option>
-  				<option value="3">Third</option>
-  				<option value="4">Fourth</option>
+ 				<option value="1">1</option>
+ 				<option value="2">2</option>
+  				<option value="3">3</option>
+  				<option value="4">4</option>
 			</select>
 			</div>
 			<!-- Blood Group -->
@@ -76,7 +80,7 @@
 			<div id="contact_submit">				
 				<input type="submit" name="submit" value="Submit">
 			</div>
-	</form>
+			</form>
 
 </body>
 </html>

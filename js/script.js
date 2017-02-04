@@ -9,8 +9,37 @@ $(document).ready(function(){
 	var error_studentname = false;
 	var error_contactemail = false;
 	var error_contactno = false;
+   
+    //function to check existing records
+    function check_userrecord()
+       { 
 
+       	    var studentno = $('#student_no').val();
+       	    $('#student_no').val("");
+            $('#student_name').val("");
+            $('#contact_email').val("");
+            $('#contact_no').val("");
+               
+       	    //alert(studentno);
+            $.ajax({
+          	type:"POST",
+          	url: "userrecord.php",
+          	data: "studentno="+studentno,
+          	datatype: "json",
+          	success: function(msg){
+          		//console.log(msg);
+          		var student =JSON.parse(msg);
+          		//$('#result').html(student.student_no_return);
+          		$('#recordsfound').html(student.recordsfound);
+               
+          		$('#student_no').val(student.student_no_return);
+                $('#student_name').val(student.student_name_return);
+                $('#contact_email').val(student.email_return);
+                $('#contact_no').val(student.contact_no_return);
+               }
 
+          });
+       } 
 	//function for student no. validation
 	function check_studentno() 
 		{
@@ -72,6 +101,11 @@ $(document).ready(function(){
 	$("#student_no").focusout(function() 
 		{
 			check_studentno();
+		});
+
+		$("#student_no").focusout(function() 
+		{
+			check_userrecord();
 		});
 
 	$("#student_name").focusout(function() 
