@@ -30,7 +30,7 @@ $(document).ready(function(){
 
 	//function for student name validation
 	function check_studentname(){
-		var student_pattern = new RegExp(/^([a-zA-Z ]*)$/);
+		var student_pattern = new RegExp(/^[a-zA-Z\-'\s]+$/);
 		if(student_pattern.test($("#student_name").val())) {
 			$("#student_name_error").hide();
 		}
