@@ -13,7 +13,7 @@
 	</script>
 </head>
 <body>
-    <div id="recordsfound" style="color:red;"></div>
+    <div id="recordsfound" style="color:red;">Type In Your Student No:</div>
 	<form id="registration_form" method="POST" action="registration.php">
 			<!-- Student No -->
 			<div>

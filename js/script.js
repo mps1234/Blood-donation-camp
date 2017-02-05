@@ -40,6 +40,28 @@ $(document).ready(function(){
 
           });
        } 
+
+
+        function sortlist()
+       { 
+
+       	   
+               
+       	    alert('ghjkl');
+            $.ajax({
+          	type:"POST",
+          	url: "sort.php",
+          	datatype: "json",
+          	success: function(msg){
+          		//console.log(msg);
+          		var x =JSON.parse(msg);
+          		$('#sortbutton').html(x.sorted);
+          		//$('#result').html(student.student_no_return);
+          		
+               }
+
+          });
+       }
 	//function for student no. validation
 	function check_studentno() 
 		{
@@ -121,6 +143,11 @@ $(document).ready(function(){
 	$("#contact_no").focusout(function() 
 		{
 			check_contactno();
+		});
+    
+    $("#sortbutton").click(function() 
+		{
+			sortlist();
 		});
 
 	$("#registration_form").submit(function() 

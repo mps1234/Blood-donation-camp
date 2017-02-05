@@ -57,7 +57,7 @@ else{
 						$_SESSION['sess_user']=$Name;
 
 						/* Redirect browser */
-						header("Location: http://localhost/BDC/index.php");
+						header("Location: http://localhost/BDC/admin/admin.php");
 					}
 					} else {
 				echo "Invalid username or password!";
