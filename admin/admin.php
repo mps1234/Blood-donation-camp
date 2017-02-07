@@ -14,6 +14,15 @@ else{
 	<title>Admin Panel</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="../js/searchscript.js"></script>
+	 <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	<style> 
 		#panel, #flip {
 		    padding: 5px;
@@ -32,16 +41,12 @@ else{
 	
 	function submitslotdatafunc() 
     {
-      
-     // alert('ghjkl');
-    
-     
       var no_of_beds, no_of_slots;
       no_of_beds = $("#no_beds").val();
       no_of_slots = $("#no_slots").val();
        //no_beds = document.getElementById("no_beds");
       //no_slots = document.getElementById("no_slots");
-      alert(no_of_slots);
+      
       $.ajax({
           type:"GET",
           url: "submitslotdata.php",
@@ -61,13 +66,21 @@ else{
     </script>
 </head>
 <body>
-	<a href="http://localhost/BDC/admin/logout.php">logout</a>
 
-	<!-- For exporting data into excel file -->
-	<form method="POST" action="http://localhost/BDC/admin/excel.php"><input type="submit" name="export_excel" value="Export to excel"></form>
-
-
+	<div class="container">
+		<div class="row">
+			<h2 style="text-align: center;text-decoration: underline;">BLOOD DONATION CAMP - 2017</h2></div>
+		<div class="row"><h3 style="text-align: center;text-decoration: underline;"> Admin Panel </h3></div>
+		<div class="row"><hr></div>
+			
 	<!-- For taking the input from admin -->
+<div class="row">
+	<div class="col-md-8 col-sm-8">
+<h4>Enter the following details to allot slots :</h4>
+	</div>
+	<div class="col-md-3 col-sm-3"><form method="POST" action="http://localhost/BDC/admin/excel.php"><input type="submit" name="export_excel" value="Export to Excel" class="btn btn-primary btn-lg"></form></div>
+	<div class="col-md-1 col-sm-1"><a href="http://localhost/BDC/admin/logout.php" class="btn btn-danger">Logout</a></div>
+</div>
 	<div id="slotinfoform">
 			<div>
 				<label for="no_beds">No of beds:</label>
@@ -82,9 +95,9 @@ else{
 			</div>
 
 			<div id="slotdatasubmitted">
-				<input type="submit" name="submit" value="Submit" id="submitslotdatabtn" onclick="submitslotdatafunc();">
+				<input type="submit" name="submit" value="Submit" id="submitslotdatabtn" class="btn btn-success" onclick="submitslotdatafunc();">
 			</div>
-	</div>
+	</div><br>
 	<!-- for searching data -->
 	<div id="flip">Search registration data</div>
 	
@@ -102,7 +115,8 @@ $qry= "SELECT * FROM registration_data";
 $res= mysqli_query($con,$qry);
  if(mysqli_num_rows($res))
 	 {
-	 	echo '<table id="myTable">
+	 	
+	 	echo '<table id="myTable" class="table table-striped" style="display: block;overflow-x: scroll;">
        				<tr>
 						<th>Student No</th>
 						<th>Name</th>
@@ -144,6 +158,7 @@ $res= mysqli_query($con,$qry);
  }
 
 ?>
+</div>
 </body>
 </html>
 <?php
