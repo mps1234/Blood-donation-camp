@@ -14,7 +14,6 @@ else{
 	<title>Admin Panel</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="../js/searchscript.js"></script>
-
 	<style> 
 		#panel, #flip {
 		    padding: 5px;
@@ -29,6 +28,37 @@ else{
 		}
 
 	</style>
+	<script type="text/javascript">
+	
+	function submitslotdatafunc() 
+    {
+      
+     // alert('ghjkl');
+    
+     
+      var no_of_beds, no_of_slots;
+      no_of_beds = $("#no_beds").val();
+      no_of_slots = $("#no_slots").val();
+       //no_beds = document.getElementById("no_beds");
+      //no_slots = document.getElementById("no_slots");
+      alert(no_of_slots);
+      $.ajax({
+          type:"GET",
+          url: "submitslotdata.php",
+          data : {
+                   no_of_slots : no_of_slots ,
+                   no_of_beds : no_of_beds // will be accessible in $_POST['data1']
+                  },
+          datatype: "json",
+          success: function(msg){
+                                  var y =JSON.parse(msg);
+                                  $('#slotdatasubmitted').html(y.slotdatasubmitted);
+                                }
+
+              
+            });
+  }
+    </script>
 </head>
 <body>
 	<a href="http://localhost/BDC/admin/logout.php">logout</a>
@@ -38,24 +68,23 @@ else{
 
 
 	<!-- For taking the input from admin -->
-	<form action="" method="POST">
+	<div id="slotinfoform">
 			<div>
 				<label for="no_beds">No of beds:</label>
-				<input type="number" id="no_beds" name="beds"></input>
+				<input type="number" id="no_beds" name="beds" required></input>
 				
 			</div>
 
 			<div>
 				<label for="no_slots">No of slots:</label>
-				<input type="number" id="no_slots" name="slots"></input>
+				<input type="number" id="no_slots" name="slots" required></input>
 				
 			</div>
 
-			<div>
-				<input type="submit" name="submit" value="Submit">
+			<div id="slotdatasubmitted">
+				<input type="submit" name="submit" value="Submit" id="submitslotdatabtn" onclick="submitslotdatafunc();">
 			</div>
-	</form>
-
+	</div>
 	<!-- for searching data -->
 	<div id="flip">Search registration data</div>
 	
