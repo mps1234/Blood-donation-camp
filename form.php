@@ -18,7 +18,7 @@
 			<!-- Student No -->
 			<div>
 				<label for="student_no">Student No:</label>
-				<input type="number" id="student_no" name="studentno"></input>
+				<input type="text" id="student_no" name="studentno"></input>
 				<span id="student_no_error"></span>
 			</div>
 			<!-- Name -->

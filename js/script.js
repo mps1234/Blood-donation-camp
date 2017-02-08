@@ -65,11 +65,16 @@ $(document).ready(function(){
 		{
 
 		var studentno_length = $("#student_no").val().length;
-		if(studentno_length < 7 || studentno_length > 8) 
+		if(studentno_length==0){
+			$("#student_no_error").html("Enter student no");
+			$("#student_no_error").show();
+			error_studentno = true;
+		}
+		else if(studentno_length < 7 || studentno_length > 8) 
 				{
 			$("#student_no_error").html("Invalid student no");
 			$("#student_no_error").show();
-			error_username = true;
+			error_studentno = true;
 				} 
 		else
 			{
@@ -80,7 +85,12 @@ $(document).ready(function(){
 	//function for student name validation
 	function check_studentname(){
 		var student_pattern = new RegExp(/^[a-zA-Z\-'\s]+$/);
-		if(student_pattern.test($("#student_name").val())) {
+		if($("#student_name").val().length ==0){
+			$("#student_name_error").html("Enter student name");
+			$("#student_name_error").show();
+			error_studentname = true;
+		}
+		else if(student_pattern.test($("#student_name").val())) {
 			$("#student_name_error").hide();
 		}
 		else{
@@ -94,7 +104,12 @@ $(document).ready(function(){
 	//function for email validation
 	function check_studentemail(){
 		var email_pattern = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
-		if(email_pattern.test($("#contact_email").val())) {
+		if($("#contact_email").val().length ==0){
+			$("#contact_email_error").html("Enter email id");
+			$("#contact_email_error").show();
+			error_contactemail = true;
+		}
+		else if(email_pattern.test($("#contact_email").val())) {
 			$("#contact_email_error").hide();
 		}
 		else{
@@ -108,7 +123,12 @@ $(document).ready(function(){
 	//function for contact no validation
 	function check_contactno(){
 		var contact_pattern = new RegExp(/^(([0-9]{10,11}))$/);
-		if(contact_pattern.test($("#contact_no").val())) {
+		if($("#contact_no").val().length ==0){
+			$("#contact_no_error").html("Enter contact no");
+			$("#contact_no_error").show();
+			error_contactno = true;
+		}
+		else if(contact_pattern.test($("#contact_no").val())) {
 			$("#contact_no_error").hide();
 		}
 		else{
