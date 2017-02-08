@@ -41,16 +41,13 @@ $(document).ready(function(){
           });
        } 
 
-
+       //function for sorting data
         function sortlist()
        { 
-
-       	   
-               
-       	    alert('ghjkl');
+       		alert('Data Sorted as per the conditions');
             $.ajax({
           	type:"POST",
-          	url: "sort.php",
+          	url: "../admin/sort.php",
           	datatype: "json",
           	success: function(msg){
           		//console.log(msg);
@@ -62,6 +59,7 @@ $(document).ready(function(){
 
           });
        }
+
 	//function for student no. validation
 	function check_studentno() 
 		{

@@ -14,6 +14,7 @@ else{
 	<title>Admin Panel</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="../js/searchscript.js"></script>
+	<script src="../js/script.js"></script>
 	 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -68,10 +69,12 @@ else{
 <body>
 
 	<div class="container">
+		<div class="well">
 		<div class="row">
-			<h2 style="text-align: center;text-decoration: underline;">BLOOD DONATION CAMP - 2017</h2></div>
-		<div class="row"><h3 style="text-align: center;text-decoration: underline;"> Admin Panel </h3></div>
-		<div class="row"><hr></div>
+			<h3 style="text-align: center;text-decoration: underline;">BLOOD DONATION CAMP - 2017</h3>
+		<h4 style="text-align: center;text-decoration: underline;"> Admin Panel </h4>
+		</div>
+		</div>
 			
 	<!-- For taking the input from admin -->
 <div class="row">
@@ -98,6 +101,13 @@ else{
 				<input type="submit" name="submit" value="Submit" id="submitslotdatabtn" class="btn btn-success" onclick="submitslotdatafunc();">
 			</div>
 	</div><br>
+	
+<div class="row">
+	<div class="col-md-9">
+<input type="button" id="sortbutton" name="sort_button" class="btn btn-primary" value="Sort Data as per the conditions"></div>
+	<div class="col-md-3"></div>
+</div><br>
+
 	<!-- for searching data -->
 	<div id="flip">Search registration data</div>
 	
