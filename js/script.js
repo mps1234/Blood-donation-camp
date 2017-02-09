@@ -66,7 +66,7 @@ $(document).ready(function(){
 	//function for student no. validation
 	function check_studentno()
 			{
-		var student_nopattern = new RegExp(/^(\d){7}[d]{0,1}$/);
+		var student_nopattern = new RegExp(/^(\d){7}[dD\-'\s']{0,1}$/);
 		if($("#student_no").val().length ==0){
 			$("#student_no_error").html("Enter student no");
 			$("#student_no_error").show();
