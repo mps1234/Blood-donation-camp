@@ -39,6 +39,11 @@ else{
 
 	</style>
 	<script type="text/javascript">
+	  $(document).ready(function()
+    {
+     document.getElementById("max_efficiency").disabled = true;
+    });
+    
 	
 	function submitslotdatafunc() 
     {
@@ -64,6 +69,25 @@ else{
               
             });
   }
+
+
+
+      function calculate_efficiency()
+    {
+    //var effieciency= $('#max_efficiency').val();
+     var beds= $('#no_beds').val();
+     var slots= $('#no_slots').val();
+     
+     var efficiency = beds*slots;
+      $('#no_slots').val(slots);
+      $('#no_beds').val(beds);
+      if(beds!=null && slots!=null)
+      {
+      $('#max_efficiency').val(efficiency);
+      }
+     	
+      
+   }
     </script>
 </head>
 <body>
@@ -87,13 +111,27 @@ else{
 	<div id="slotinfoform">
 			<div>
 				<label for="no_beds">No of beds:</label>
-				<input type="number" id="no_beds" name="beds" required></input>
+				<input type="number" id="no_beds" name="beds" onblur ="calculate_efficiency();" required></input>
 				
 			</div>
 
 			<div>
 				<label for="no_slots">No of slots:</label>
-				<input type="number" id="no_slots" name="slots" required></input>
+				<input type="number" id="no_slots" name="slots" onblur ="calculate_efficiency();"  required></input>
+				
+			</div>
+
+			<div>
+				<label for="efficiency">Max Efficiency:</label>
+				<input type="number" id="max_efficiency" name="efficiency" required></input>
+				
+			</div>
+
+			<div>
+				<label for="fromtime">From:</label>
+				<input type="time" name="from_time">
+	          	<label for="totime">To:</label>
+	            <input type="time" name="to_time">
 				
 			</div>
 
