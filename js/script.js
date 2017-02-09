@@ -41,6 +41,7 @@ $(document).ready(function(){
           });
        } 
 
+
        //function for sorting data
         function sortlist()
        { 
@@ -60,27 +61,27 @@ $(document).ready(function(){
           });
        }
 
-	//function for student no. validation
-	function check_studentno() 
-		{
 
-		var studentno_length = $("#student_no").val().length;
-		if(studentno_length==0){
+
+	//function for student no. validation
+	function check_studentno()
+			{
+		var student_nopattern = new RegExp(/^(\d){7}[d]{0,1}$/);
+		if($("#student_no").val().length ==0){
 			$("#student_no_error").html("Enter student no");
 			$("#student_no_error").show();
 			error_studentno = true;
 		}
-		else if(studentno_length < 7 || studentno_length > 8) 
-				{
+		else if(student_nopattern.test($("#student_no").val())) {
+			$("#student_no_error").hide();
+		}
+		else{
 			$("#student_no_error").html("Invalid student no");
 			$("#student_no_error").show();
 			error_studentno = true;
-				} 
-		else
-			{
-			$("#student_no_error").hide();
-			}
 		}
+			}
+
 
 	//function for student name validation
 	function check_studentname(){
