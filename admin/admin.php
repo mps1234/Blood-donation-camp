@@ -110,7 +110,7 @@ else{
 <h4>Enter the following details to allot slots :</h4>
 	</div>
 	<div class="col-md-3 col-sm-3"><form method="POST" action="http://localhost/BDC/admin/excel.php"><input type="submit" name="export_excel" value="Export Registration Data to Excel" class="btn btn-primary btn-lg"></form></div>
-	<div class="col-md-3 col-sm-3"><form method="POST" action="http://localhost/BDC/admin/excelslot.php"><input type="submit" name="export_excel" value="Export SLot Data to Excel" class="btn btn-primary btn-lg"></form></div>
+	<div class="col-md-3 col-sm-3"><form method="POST" action="http://localhost/BDC/admin/excelslot.php"><input type="submit" name="export_excel_slot" value="Export SLot Data to Excel" class="btn btn-primary btn-lg"></form></div>
 	<div class="col-md-1 col-sm-1"><a href="http://localhost/BDC/admin/logout.php" class="btn btn-danger">Logout</a></div>
 </div>
 	<div id="slotinfoform">

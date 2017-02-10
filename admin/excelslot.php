@@ -1,7 +1,8 @@
 <?php
 include('../includes/dbconnect.php');
+
 $output = "";
-if(isset($_POST['export_excel']))
+if(isset($_POST['export_excel_slot']))
 {
 	$sql = "SELECT * from registration_data, doner_slot WHERE registration_data.student_no= doner_slot.student_no";
 	$result = mysqli_query($con, $sql);
@@ -9,6 +10,7 @@ if(isset($_POST['export_excel']))
 		{
 
 			$output.= '
+			
 			<table border="1">
 			<caption style="text-align:center;">Registration Details</caption>
 				<tr>
@@ -34,7 +36,8 @@ if(isset($_POST['export_excel']))
            		 else
             	$h= "No"; 
 
-				$output.= '
+			$output.= '
+			
 				<tr>
 					<td>'.$row["student_no"].'</td>
 					<td>'.$row["name"].'</td>
@@ -54,11 +57,18 @@ if(isset($_POST['export_excel']))
 				';
 
 			}
-			$output.='</table>';
+			$output.=
+              
+			'</table>';
 			header("Content-Type:application/vnd.ms-excel; charset=utf-8");
 			header("Content-Disposition:attachment; filename=BDCSlotinformation.xls");
 			echo $output;
 
 
+		}
+		else 
+           {
+           	echo 'No Slot HAve Yet BEEN Given';
+			header('refresh: 3; url=http://localhost/BDC/admin/admin.php');
 		}
 }
