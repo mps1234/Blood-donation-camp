@@ -4,7 +4,7 @@ include('../includes/dbconnect.php');
 $output = "";
 if(isset($_POST['export_excel_slot']))
 {
-	$sql = "SELECT * from registration_data, doner_slot WHERE registration_data.student_no= doner_slot.student_no";
+	$sql = "SELECT * from registration_data, doner_slot WHERE registration_data.registration_id= doner_slot.registration_id order by alloted_id";
 	$result = mysqli_query($con, $sql);
 	if(mysqli_num_rows($result)>0)
 		{

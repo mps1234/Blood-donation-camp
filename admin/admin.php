@@ -183,7 +183,7 @@ else{
 	<?php
 
 include('../includes/dbconnect.php');
-$qry= "SELECT * FROM registration_data";
+$qry= "SELECT * FROM registration_data order by registration_id";
 $res= mysqli_query($con,$qry);
  if(mysqli_num_rows($res))
 	 {

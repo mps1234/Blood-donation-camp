@@ -1,6 +1,6 @@
 <?php
 include('../includes/dbconnect.php');
-$qry= "SELECT * FROM sorted_data";
+$qry= "SELECT * FROM sorted_data, registration_data WHERE sorted_data.registration_id= registration_data.registration_id ORDER BY sort_id";
 $res= mysqli_query($con,$qry);
 $qry2= "SELECT * FROM slot_info";
 $res2= mysqli_query($con,$qry2);
@@ -35,8 +35,8 @@ if(mysqli_num_rows($res))
  		 
  		 {
  		 	
-            $stuno=$row['student_no'];
-            $sql = "INSERT INTO doner_slot(alloted_id, student_no, slot, from_time, to_time) VALUES(NULL,'$stuno', '$j', '$from_time_to_allot', '$to_time_to_allot')";
+            $regid=$row['registration_id'];
+            $sql = "INSERT INTO doner_slot(alloted_id, registration_id, slot, from_time, to_time) VALUES(NULL,'$regid', '$j', '$from_time_to_allot', '$to_time_to_allot')";
             $result = mysqli_query($con,$sql);
             if($i % $row2['no_of_beds']==0)
  		 	{

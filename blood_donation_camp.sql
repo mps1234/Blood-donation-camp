@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2017 at 11:26 AM
+-- Generation Time: Feb 11, 2017 at 02:38 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -48,7 +48,7 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 
 CREATE TABLE `doner_slot` (
   `alloted_id` int(11) NOT NULL,
-  `student_no` int(11) NOT NULL,
+  `registration_id` int(11) NOT NULL,
   `slot` int(11) NOT NULL,
   `from_time` varchar(20) NOT NULL,
   `to_time` varchar(20) NOT NULL
@@ -58,27 +58,37 @@ CREATE TABLE `doner_slot` (
 -- Dumping data for table `doner_slot`
 --
 
-INSERT INTO `doner_slot` (`alloted_id`, `student_no`, `slot`, `from_time`, `to_time`) VALUES
-(1, 1513, 1, '8:0', '9:0'),
-(2, 1513, 1, '8:0', '9:0'),
-(3, 1513, 1, '8:0', '9:0'),
-(4, 1513, 1, '8:0', '9:0'),
-(5, 1513036, 2, '9:0', '10:0'),
-(6, 1513036, 2, '9:0', '10:0'),
-(7, 1513036, 2, '9:0', '10:0'),
-(8, 1513036, 2, '9:0', '10:0'),
-(9, 1513037, 3, '10:0', '11:0'),
-(10, 1513037, 3, '10:0', '11:0'),
-(11, 1513037, 3, '10:0', '11:0'),
-(12, 1513037, 3, '10:0', '11:0'),
-(13, 1513038, 4, '11:0', '12:0'),
-(14, 1513038, 4, '11:0', '12:0'),
-(15, 1513038, 4, '11:0', '12:0'),
-(16, 1513038, 4, '11:0', '12:0'),
-(17, 15123215, 5, '12:0', '13:0'),
-(18, 15123215, 5, '12:0', '13:0'),
-(19, 15123215, 5, '12:0', '13:0'),
-(20, 15123215, 5, '12:0', '13:0');
+INSERT INTO `doner_slot` (`alloted_id`, `registration_id`, `slot`, `from_time`, `to_time`) VALUES
+(1, 3, 1, '8:0', '9:0'),
+(2, 7, 1, '8:0', '9:0'),
+(3, 16, 1, '8:0', '9:0'),
+(4, 17, 1, '8:0', '9:0'),
+(5, 19, 1, '8:0', '9:0'),
+(6, 21, 2, '9:0', '10:0'),
+(7, 28, 2, '9:0', '10:0'),
+(8, 30, 2, '9:0', '10:0'),
+(9, 6, 2, '9:0', '10:0'),
+(10, 8, 2, '9:0', '10:0'),
+(11, 18, 3, '10:0', '11:0'),
+(12, 20, 3, '10:0', '11:0'),
+(13, 27, 3, '10:0', '11:0'),
+(14, 29, 3, '10:0', '11:0'),
+(15, 2, 3, '10:0', '11:0'),
+(16, 5, 4, '11:0', '12:0'),
+(17, 9, 4, '11:0', '12:0'),
+(18, 10, 4, '11:0', '12:0'),
+(19, 12, 4, '11:0', '12:0'),
+(20, 13, 4, '11:0', '12:0'),
+(21, 23, 5, '12:0', '13:0'),
+(22, 31, 5, '12:0', '13:0'),
+(23, 4, 5, '12:0', '13:0'),
+(24, 11, 5, '12:0', '13:0'),
+(25, 14, 5, '12:0', '13:0'),
+(26, 15, 6, '13:0', '14:0'),
+(27, 22, 6, '13:0', '14:0'),
+(28, 24, 6, '13:0', '14:0'),
+(29, 25, 6, '13:0', '14:0'),
+(30, 26, 6, '13:0', '14:0');
 
 -- --------------------------------------------------------
 
@@ -154,7 +164,7 @@ CREATE TABLE `slot_info` (
 --
 
 INSERT INTO `slot_info` (`id`, `no_of_slots`, `no_of_beds`, `from_time`, `to_time`) VALUES
-(5, 4, 4, 8, 12);
+(2, 4, 5, 8, 12);
 
 -- --------------------------------------------------------
 
@@ -164,44 +174,44 @@ INSERT INTO `slot_info` (`id`, `no_of_slots`, `no_of_beds`, `from_time`, `to_tim
 
 CREATE TABLE `sorted_data` (
   `sort_id` int(11) NOT NULL,
-  `student_no` int(11) NOT NULL
+  `registration_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sorted_data`
 --
 
-INSERT INTO `sorted_data` (`sort_id`, `student_no`) VALUES
-(16, 1513010),
-(9, 1513011),
-(2, 1513012),
-(10, 1513013),
-(17, 1513014),
-(18, 1513015),
-(24, 1513016),
-(19, 1513017),
-(20, 1513018),
-(25, 1513019),
-(26, 1513020),
-(3, 1513022),
-(4, 1513023),
-(11, 1513024),
-(5, 1513025),
-(12, 1513026),
-(6, 1513027),
-(27, 1513028),
-(21, 1513029),
-(28, 1513030),
-(29, 1513031),
-(30, 1513032),
-(13, 1513033),
-(7, 1513034),
-(14, 1513035),
-(8, 1513036),
-(15, 1513037),
-(1, 1513038),
-(23, 1513039),
-(22, 1513046);
+INSERT INTO `sorted_data` (`sort_id`, `registration_id`) VALUES
+(15, 2),
+(1, 3),
+(23, 4),
+(16, 5),
+(9, 6),
+(2, 7),
+(10, 8),
+(17, 9),
+(18, 10),
+(24, 11),
+(19, 12),
+(20, 13),
+(25, 14),
+(26, 15),
+(3, 16),
+(4, 17),
+(11, 18),
+(5, 19),
+(12, 20),
+(6, 21),
+(27, 22),
+(21, 23),
+(28, 24),
+(29, 25),
+(30, 26),
+(13, 27),
+(7, 28),
+(14, 29),
+(8, 30),
+(22, 31);
 
 --
 -- Indexes for dumped tables
@@ -218,7 +228,7 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `doner_slot`
   ADD PRIMARY KEY (`alloted_id`),
-  ADD KEY `student_no` (`student_no`);
+  ADD KEY `student_no` (`registration_id`);
 
 --
 -- Indexes for table `registration_data`
@@ -237,7 +247,7 @@ ALTER TABLE `slot_info`
 --
 ALTER TABLE `sorted_data`
   ADD PRIMARY KEY (`sort_id`),
-  ADD KEY `student_no` (`student_no`);
+  ADD KEY `student_no` (`registration_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -252,7 +262,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `doner_slot`
 --
 ALTER TABLE `doner_slot`
-  MODIFY `alloted_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `alloted_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `registration_data`
 --
@@ -262,7 +272,7 @@ ALTER TABLE `registration_data`
 -- AUTO_INCREMENT for table `slot_info`
 --
 ALTER TABLE `slot_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `sorted_data`
 --

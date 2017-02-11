@@ -3,7 +3,7 @@ include('../includes/dbconnect.php');
 $output = "";
 if(isset($_POST['export_excel']))
 {
-	$sql = "SELECT * from registration_data";
+	$sql = "SELECT * from registration_data order by registration_id";
 	$result = mysqli_query($con, $sql);
 	if(mysqli_num_rows($result)>0)
 		{
