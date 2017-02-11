@@ -1,44 +1,10 @@
 
 $(document).ready(function(){
     $("#flip").click(function(){
-        $("#panel").slideToggle("slow");
+        $("#panel").slideToggle("fast");
     });
 });
 
-
-/*  
-$("#submitslotdatabtn").click(function() 
-    {
-  
-      function submitdata() 
-      {
-      var no_beds, no_slots;
-      no_beds = document.getElementById("no_beds");
-      no_slots = document.getElementById("no_slots");
-
-
-      alert('ghjkl');
-      
-      $.ajax({
-          type:"POST",
-          url: "submitslotdata.php",
-           data : {
-                   no_slots : 'no_slots' ,
-                   no_beds : 'no_beds' // will be accessible in $_POST['data1']
-                  },
-          datatype: "json",
-          
-          success: function(msg){
-                                       //console.log(msg);
-                                  var y =JSON.parse(msg);
-                                  $('#slotdatasubmitted').html(y.slotdatasubmitted);
-                                  
-                                }
-
-              }
-            }  
-    });
-*/
 
 // Search data by student No
 	function myFunction() {

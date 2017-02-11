@@ -2,7 +2,7 @@
 session_start();
 include('../includes/dbconnect.php');
 if(isset($_SESSION["sess_user"])){
-  header("Location:http://localhost/mylearning/bdc/admin/admin.php");
+  header("Location:http://localhost/BDC/admin/admin.php");
 }
 else{
 

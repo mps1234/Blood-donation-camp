@@ -42,15 +42,13 @@ $(document).ready(function(){
        } 
 
 
+       //function for sorting data
         function sortlist()
        { 
-
-       	   
-               
-       	    alert('ghjkl');
+       		alert('Data Sorted as per the conditions');
             $.ajax({
           	type:"POST",
-          	url: "sort.php",
+          	url: "../admin/sort.php",
           	datatype: "json",
           	success: function(msg){
           		//console.log(msg);
@@ -62,27 +60,38 @@ $(document).ready(function(){
 
           });
        }
-	//function for student no. validation
-	function check_studentno() 
-		{
 
-		var studentno_length = $("#student_no").val().length;
-		if(studentno_length < 7 || studentno_length > 8) 
-				{
+
+
+	//function for student no. validation
+	function check_studentno()
+			{
+		var student_nopattern = new RegExp(/^(\d){7}[dD\-'\s']{0,1}$/);
+		if($("#student_no").val().length ==0){
+			$("#student_no_error").html("Enter student no");
+			$("#student_no_error").show();
+			error_studentno = true;
+		}
+		else if(student_nopattern.test($("#student_no").val())) {
+			$("#student_no_error").hide();
+		}
+		else{
 			$("#student_no_error").html("Invalid student no");
 			$("#student_no_error").show();
-			error_username = true;
-				} 
-		else
-			{
-			$("#student_no_error").hide();
-			}
+			error_studentno = true;
 		}
+			}
+
 
 	//function for student name validation
 	function check_studentname(){
 		var student_pattern = new RegExp(/^[a-zA-Z\-'\s]+$/);
-		if(student_pattern.test($("#student_name").val())) {
+		if($("#student_name").val().length ==0){
+			$("#student_name_error").html("Enter student name");
+			$("#student_name_error").show();
+			error_studentname = true;
+		}
+		else if(student_pattern.test($("#student_name").val())) {
 			$("#student_name_error").hide();
 		}
 		else{
@@ -96,7 +105,12 @@ $(document).ready(function(){
 	//function for email validation
 	function check_studentemail(){
 		var email_pattern = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
-		if(email_pattern.test($("#contact_email").val())) {
+		if($("#contact_email").val().length ==0){
+			$("#contact_email_error").html("Enter email id");
+			$("#contact_email_error").show();
+			error_contactemail = true;
+		}
+		else if(email_pattern.test($("#contact_email").val())) {
 			$("#contact_email_error").hide();
 		}
 		else{
@@ -110,7 +124,12 @@ $(document).ready(function(){
 	//function for contact no validation
 	function check_contactno(){
 		var contact_pattern = new RegExp(/^(([0-9]{10,11}))$/);
-		if(contact_pattern.test($("#contact_no").val())) {
+		if($("#contact_no").val().length ==0){
+			$("#contact_no_error").html("Enter contact no");
+			$("#contact_no_error").show();
+			error_contactno = true;
+		}
+		else if(contact_pattern.test($("#contact_no").val())) {
 			$("#contact_no_error").hide();
 		}
 		else{

@@ -6,5 +6,5 @@ unset($_SESSION['sess_user']);
 session_destroy();
 }
 
-header("Location:http://localhostmylearning/bdc/admin/index.php");
+header("Location:http://localhost/BDC/admin/index.php");
 ?>

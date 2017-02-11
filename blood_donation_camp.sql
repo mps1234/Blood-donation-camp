@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2017 at 01:18 PM
+-- Generation Time: Feb 11, 2017 at 11:26 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -87,13 +87,14 @@ INSERT INTO `doner_slot` (`alloted_id`, `student_no`, `slot`, `from_time`, `to_t
 --
 
 CREATE TABLE `registration_data` (
+  `registration_id` int(11) NOT NULL,
   `student_no` varchar(11) NOT NULL,
   `name` varchar(40) NOT NULL,
   `gender` varchar(20) NOT NULL,
   `year` tinyint(4) NOT NULL,
   `blood_group` varchar(10) NOT NULL,
   `email` varchar(40) NOT NULL,
-  `contact_no` bigint(15) NOT NULL,
+  `contact_no` bigint(20) NOT NULL,
   `hosteller` int(11) NOT NULL,
   `now` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -102,13 +103,37 @@ CREATE TABLE `registration_data` (
 -- Dumping data for table `registration_data`
 --
 
-INSERT INTO `registration_data` (`student_no`, `name`, `gender`, `year`, `blood_group`, `email`, `contact_no`, `hosteller`, `now`) VALUES
-('0', '', '', 0, '', '', 0, 0, '2017-02-04 10:24:11'),
-('15123215', 'lkk', 'male', 1, 'A+', 'imtemptedguy@gmail.com', 2147483647, 1, '2017-02-06 07:11:16'),
-('1513', 'SaurabhVerma', 'male', 1, 'A+', 'imtemptedguy@gmail.com', 1234567890, 1, '2017-02-04 06:04:35'),
-('1513036', 'SaurabhVerma', 'male', 1, 'A+', 'imtemptedguy@gmail.com', 2147483647, 1, '2017-02-04 12:48:05'),
-('1513037', 'SaurabhVerma', 'Male', 2, 'AB+', 'imtemptedguy@gmail.com', 1234567890, 1, '2017-02-03 14:17:59'),
-('1513038', 'Saurabh ', 'male', 1, 'A+', 'Imtemptedguy@gmail.com', 2147483647, 1, '2017-02-04 07:28:48');
+INSERT INTO `registration_data` (`registration_id`, `student_no`, `name`, `gender`, `year`, `blood_group`, `email`, `contact_no`, `hosteller`, `now`) VALUES
+(2, '1513037', 'saubh', 'male', 1, 'ab+', 'imtemptedguy@gmail.com', 9956291219, 0, '2017-02-11 10:16:43'),
+(3, '1513038', 'cwefrfr', 'female', 1, 'b', 'imtemptedguy@gmail..com', 9956291219, 0, '2017-02-11 10:16:43'),
+(4, '1513039', '', 'male', 0, '', 'imtemptedguy@gmail..com', 9956291219, 1, '2017-02-11 10:16:43'),
+(5, '1513010', '', 'male', 0, '', 'imtemptedguy@gmail..com', 9956291219, 0, '2017-02-11 10:16:43'),
+(6, '1513011', '', 'female', 0, '', 'imtemptedguy@gmail..com', 9956291219, 1, '2017-02-11 10:16:43'),
+(7, '1513012', '', 'female', 0, '', 'imtemptedguy@gmail..com', 9956291219, 0, '2017-02-11 10:16:43'),
+(8, '1513013', '', 'female', 0, '', 'imtemptedguy@gmail..com', 9956291219, 1, '2017-02-11 10:16:43'),
+(9, '1513014', '', 'male', 0, '', 'imtemptedguy@gmail..com', 9956291219, 0, '2017-02-11 10:16:43'),
+(10, '1513015', '', 'male', 0, '', 'imtemptedguy@gmail..com', 9956291219, 0, '2017-02-11 10:16:43'),
+(11, '1513016', '', 'male', 0, '', 'imtemptedguy@gmail..com', 9956291219, 1, '2017-02-11 10:16:43'),
+(12, '1513017', '', 'male', 0, '', 'imtemptedguy@gmail..com', 9956291219, 0, '2017-02-11 10:16:43'),
+(13, '1513018', '', 'male', 0, '', 'imtemptedguy@gmail..com', 9956291219, 0, '2017-02-11 10:16:43'),
+(14, '1513019', '', 'male', 0, '', 'imtemptedguy@gmail..com', 9956291219, 1, '2017-02-11 10:16:43'),
+(15, '1513020', '', 'male', 0, '', 'imtemptedguy@gmail..com', 9956291219, 1, '2017-02-11 10:16:43'),
+(16, '1513022', '', 'female', 0, '', 'imtemptedguy@gmail..com', 9956291219, 0, '2017-02-11 10:16:43'),
+(17, '1513023', '', 'female', 0, '', 'imtemptedguy@gmail..com', 9956291219, 0, '2017-02-11 10:16:43'),
+(18, '1513024', '', 'female', 0, '', 'imtemptedguy@gmail..com', 9956291219, 1, '2017-02-11 10:16:43'),
+(19, '1513025', '', 'female', 0, '', 'imtemptedguy@gmail..com', 9956291219, 0, '2017-02-11 10:16:43'),
+(20, '1513026', '', 'female', 0, '', 'imtemptedguy@gmail..com', 9956291219, 1, '2017-02-11 10:16:43'),
+(21, '1513027', '', 'female', 0, '', 'imtemptedguy@gmail..com', 9956291219, 0, '2017-02-11 10:16:43'),
+(22, '1513028', '', 'male', 0, '', 'imtemptedguy@gmail..com', 9956291219, 1, '2017-02-11 10:16:43'),
+(23, '1513029', '', 'male', 0, '', 'imtemptedguy@gmail..com', 9956291219, 0, '2017-02-11 10:16:43'),
+(24, '1513030', '', 'male', 0, '', 'imtemptedguy@gmail..com', 9956291219, 1, '2017-02-11 10:16:43'),
+(25, '1513031', '', 'male', 0, '', 'imtemptedguy@gmail..com', 9956291219, 1, '2017-02-11 10:16:43'),
+(26, '1513032', '', 'male', 0, '', 'imtemptedguy@gmail..com', 9956291219, 1, '2017-02-11 10:16:43'),
+(27, '1513033', '', 'female', 0, '', 'imtemptedguy@gmail..com', 9956291219, 1, '2017-02-11 10:16:43'),
+(28, '1513034', '', 'female', 0, '', 'imtemptedguy@gmail..com', 9956291219, 0, '2017-02-11 10:16:43'),
+(29, '1513035', '', 'female', 0, '', 'imtemptedguy@gmail.com', 9956291219, 1, '2017-02-11 10:16:43'),
+(30, '1513036', '', 'female', 0, '', 'imtemptedguy@gmail.com', 9956291219, 0, '2017-02-11 10:16:43'),
+(31, '1513046', '', 'male', 0, '', 'imtemptedguy@gmail.com', 9956291219, 0, '2017-02-11 10:16:43');
 
 -- --------------------------------------------------------
 
@@ -147,26 +172,36 @@ CREATE TABLE `sorted_data` (
 --
 
 INSERT INTO `sorted_data` (`sort_id`, `student_no`) VALUES
-(2, 1513),
-(7, 1513),
-(12, 1513),
-(17, 1513),
-(4, 1513036),
-(9, 1513036),
-(14, 1513036),
-(19, 1513036),
-(1, 1513037),
-(6, 1513037),
-(11, 1513037),
-(16, 1513037),
-(3, 1513038),
-(8, 1513038),
-(13, 1513038),
-(18, 1513038),
-(5, 15123215),
-(10, 15123215),
-(15, 15123215),
-(20, 15123215);
+(16, 1513010),
+(9, 1513011),
+(2, 1513012),
+(10, 1513013),
+(17, 1513014),
+(18, 1513015),
+(24, 1513016),
+(19, 1513017),
+(20, 1513018),
+(25, 1513019),
+(26, 1513020),
+(3, 1513022),
+(4, 1513023),
+(11, 1513024),
+(5, 1513025),
+(12, 1513026),
+(6, 1513027),
+(27, 1513028),
+(21, 1513029),
+(28, 1513030),
+(29, 1513031),
+(30, 1513032),
+(13, 1513033),
+(7, 1513034),
+(14, 1513035),
+(8, 1513036),
+(15, 1513037),
+(1, 1513038),
+(23, 1513039),
+(22, 1513046);
 
 --
 -- Indexes for dumped tables
@@ -189,7 +224,7 @@ ALTER TABLE `doner_slot`
 -- Indexes for table `registration_data`
 --
 ALTER TABLE `registration_data`
-  ADD PRIMARY KEY (`student_no`);
+  ADD PRIMARY KEY (`registration_id`);
 
 --
 -- Indexes for table `slot_info`
@@ -219,6 +254,11 @@ ALTER TABLE `admin`
 ALTER TABLE `doner_slot`
   MODIFY `alloted_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
+-- AUTO_INCREMENT for table `registration_data`
+--
+ALTER TABLE `registration_data`
+  MODIFY `registration_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+--
 -- AUTO_INCREMENT for table `slot_info`
 --
 ALTER TABLE `slot_info`
@@ -227,7 +267,7 @@ ALTER TABLE `slot_info`
 -- AUTO_INCREMENT for table `sorted_data`
 --
 ALTER TABLE `sorted_data`
-  MODIFY `sort_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `sort_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
