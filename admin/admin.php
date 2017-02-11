@@ -50,6 +50,8 @@ else{
       var no_of_beds, no_of_slots;
       no_of_beds = $("#no_beds").val();
       no_of_slots = $("#no_slots").val();
+      from_time = $("#from_time").val();
+      to_time = $("#to_time").val();
        //no_beds = document.getElementById("no_beds");
       //no_slots = document.getElementById("no_slots");
       
@@ -58,7 +60,9 @@ else{
           url: "submitslotdata.php",
           data : {
                    no_of_slots : no_of_slots ,
-                   no_of_beds : no_of_beds // will be accessible in $_POST['data1']
+                   no_of_beds : no_of_beds ,
+                   from_time: from_time,
+                   to_time : to_time
                   },
           datatype: "json",
           success: function(msg){
@@ -105,7 +109,8 @@ else{
 	<div class="col-md-8 col-sm-8">
 <h4>Enter the following details to allot slots :</h4>
 	</div>
-	<div class="col-md-3 col-sm-3"><form method="POST" action="http://localhost/BDC/admin/excel.php"><input type="submit" name="export_excel" value="Export to Excel" class="btn btn-primary btn-lg"></form></div>
+	<div class="col-md-3 col-sm-3"><form method="POST" action="http://localhost/BDC/admin/excel.php"><input type="submit" name="export_excel" value="Export Registration Data to Excel" class="btn btn-primary btn-lg"></form></div>
+	<div class="col-md-3 col-sm-3"><form method="POST" action="http://localhost/BDC/admin/excelslot.php"><input type="submit" name="export_excel_slot" value="Export SLot Data to Excel" class="btn btn-primary btn-lg"></form></div>
 	<div class="col-md-1 col-sm-1"><a href="http://localhost/BDC/admin/logout.php" class="btn btn-danger">Logout</a></div>
 </div>
 	<div id="slotinfoform">
@@ -127,11 +132,26 @@ else{
 				
 			</div>
 
-			<div>
-				<label for="fromtime">From:</label>
-				<input type="time" name="from_time">
-	          	<label for="totime">To:</label>
-	            <input type="time" name="to_time">
+			<div id="timefromto">
+
+			    				
+				<label> From:</label>
+				<select name="timestart" id="from_time">
+                <option value="08">08 am </option>
+				<option value="09">09 am</option>
+				<option value="10">10 am</option>
+				<option value="11">11 am</option>
+				<option value="12">12 pm</option>
+                </select>
+				
+				<label> To:</label>
+				<select name="timestop" id="to_time">
+			    <option value="12">12 pm</option>
+				<option value="13">1 pm</option>
+				<option value="14">2 pm </option>
+				<option value="15">3 pm </option>
+				<option value="16">4 pm</option>
+			    </select>
 				
 			</div>
 
@@ -141,9 +161,13 @@ else{
 	</div><br>
 	
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-md-3">
 <input type="button" id="sortbutton" name="sort_button" class="btn btn-primary" value="Sort Data as per the conditions"></div>
 	<div class="col-md-3"></div>
+
+	<div class="col-md-9">
+		<a href="http://localhost/BDC/admin/slotallot.php" class="btn btn-primary">Allot Slots</a>
+	</div>
 </div><br>
 
 	<!-- for searching data -->
@@ -204,6 +228,8 @@ $res= mysqli_query($con,$qry);
  {
  	echo 'No Registrations';
  }
+
+
 
 ?>
 </div>

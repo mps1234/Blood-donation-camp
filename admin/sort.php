@@ -1,7 +1,7 @@
 <?php
 include('../includes/dbconnect.php');
 
-$qry= "SELECT * FROM registration_data WHERE gender= 'female' AND hosteller='0' ORDER BY now";
+$qry= "SELECT student_no FROM registration_data WHERE gender= 'female' AND hosteller='0' ORDER BY gender ASC, hosteller ASC";
 $res= mysqli_query($con,$qry);
  if($row=mysqli_num_rows($res))
  {//echo '';
@@ -15,7 +15,7 @@ $res= mysqli_query($con,$qry);
  }
 
 
-$qry2= "SELECT * FROM registration_data WHERE gender= 'female' AND hosteller='1' ORDER BY now";
+$qry2= "SELECT student_no FROM registration_data WHERE gender= 'female' AND hosteller='1' ORDER BY gender ASC, hosteller ASC";
 $res2= mysqli_query($con,$qry2);
  if($row2=mysqli_num_rows($res2))
  {//echo '';
@@ -28,7 +28,7 @@ $res2= mysqli_query($con,$qry2);
  	}
  }
 
- $qry3= "SELECT * FROM registration_data WHERE gender= 'male' AND hosteller='0' ORDER BY now";
+ $qry3= "SELECT student_no FROM registration_data WHERE gender= 'male' AND hosteller='0' ORDER BY gender ASC, hosteller ASC";
 $res3= mysqli_query($con,$qry3);
  if($row3=mysqli_num_rows($res3))
  {//echo '';
@@ -41,7 +41,7 @@ $res3= mysqli_query($con,$qry3);
  	}
  }
 
- $qry4= "SELECT * FROM registration_data WHERE gender= 'male' AND hosteller='1' ORDER BY now";
+ $qry4= "SELECT student_no FROM registration_data WHERE gender= 'male' AND hosteller='1'";
 $res4= mysqli_query($con,$qry4);
  if($row4=mysqli_num_rows($res4))
  {//echo '';
