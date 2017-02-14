@@ -106,31 +106,36 @@ else{
 			
 	<!-- For taking the input from admin -->
 <div class="row">
-	<div class="col-md-8 col-sm-8">
-<h4>Enter the following details to allot slots :</h4>
+	<div class="col-md-4 col-sm-4">
+		<h4>Enter the following details to allot slots :</h4>
 	</div>
-	<div class="col-md-3 col-sm-3"><form method="POST" action="http://localhost/BDC/admin/excel.php"><input type="submit" name="export_excel" value="Export Registration Data to Excel" class="btn btn-primary btn-lg"></form></div>
-	<div class="col-md-3 col-sm-3"><form method="POST" action="http://localhost/BDC/admin/excelslot.php"><input type="submit" name="export_excel_slot" value="Export SLot Data to Excel" class="btn btn-primary btn-lg"></form></div>
+
+	<div class="col-md-4 col-sm-4"><form method="POST" action="http://localhost/BDC/admin/excel.php"><input type="submit" name="export_excel" value="Export Registration Data to Excel" class="btn btn-primary btn-lg"></form></div>
+
+	<div class="col-md-3 col-sm-3"><form method="POST" action="http://localhost/BDC/admin/excelslot.php"><input type="submit" name="export_excel_slot" value="Export Slot Data to Excel" class="btn btn-primary btn-lg"></form></div>
+
 	<div class="col-md-1 col-sm-1"><a href="http://localhost/BDC/admin/logout.php" class="btn btn-danger">Logout</a></div>
+
 </div>
+
 	<div id="slotinfoform">
 			<div>
 				<label for="no_beds">No of beds:</label>
 				<input type="number" id="no_beds" name="beds" onblur ="calculate_efficiency();" required></input>
 				
-			</div>
+			</div><br>
 
 			<div>
 				<label for="no_slots">No of slots:</label>
 				<input type="number" id="no_slots" name="slots" onblur ="calculate_efficiency();"  required></input>
 				
-			</div>
+			</div><br>
 
 			<div>
 				<label for="efficiency">Max Efficiency:</label>
-				<input type="number" id="max_efficiency" name="efficiency" required></input>
+				<input type="number" id="max_efficiency" name="efficiency" required></input><br>
 				
-			</div>
+			</div><br>
 
 			<div id="timefromto">
 
@@ -143,7 +148,7 @@ else{
 				<option value="11">11 am</option>
 				<option value="12">12 pm</option>
                 </select>
-				
+				&nbsp;
 				<label> To:</label>
 				<select name="timestop" id="to_time">
 			    <option value="12">12 pm</option>
@@ -153,7 +158,7 @@ else{
 				<option value="16">4 pm</option>
 			    </select>
 				
-			</div>
+			</div><br>
 
 			<div id="slotdatasubmitted">
 				<input type="submit" name="submit" value="Submit" id="submitslotdatabtn" class="btn btn-success" onclick="submitslotdatafunc();">
@@ -183,7 +188,7 @@ else{
 	<?php
 
 include('../includes/dbconnect.php');
-$qry= "SELECT * FROM registration_data";
+$qry= "SELECT * FROM registration_data order by registration_id";
 $res= mysqli_query($con,$qry);
  if(mysqli_num_rows($res))
 	 {

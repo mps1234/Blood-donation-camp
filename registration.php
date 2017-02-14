@@ -21,9 +21,9 @@ include('includes/dbconnect.php');
 		}
 
 		//Query to insert into database
-		$sql = "INSERT INTO registration_data(student_no,name,gender,year,blood_group,email,contact_no,hosteller)
+		$sql = "INSERT INTO registration_data(registration_id,student_no,name,gender,year,blood_group,email,contact_no,hosteller)
 			
-				VALUES('$student_no','$name','$gender','$year','$blood_group','$email','$contact_no','$hosteller')";
+				VALUES(NULL,'$student_no','$name','$gender','$year','$blood_group','$email','$contact_no','$hosteller')";
 
 		//Execute the query
 		$result = mysqli_query($con,$sql);
