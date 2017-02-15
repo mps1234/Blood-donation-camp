@@ -583,7 +583,7 @@ a.read{
 /*-- //about --*/
 /*--content-bottom--*/
 .content-in{
-	width:25%;
+	width:33.333333%;
 	float:left;
 }
 /*----*/
@@ -710,7 +710,6 @@ a.read{
 	-ms-transition:0.5s all;
 }
 .list-gds:nth-child(3){
-	height:510px !important;
 	border-right:none;
  
 }
@@ -3284,3 +3283,4 @@ body > section, .footer {
     padding: 70px 0;
     background-color: #222;
 }
+
