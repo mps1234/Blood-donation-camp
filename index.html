@@ -1,0 +1,1038 @@
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>BLOOD DONATION CAMP 2017</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Controller Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/modernizr.custom.js"></script>
+<!-- start-smoth-scrolling -->
+	<!-- jQuery CDN -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+	<!-- Validation script -->
+<!--<script type="text/javascript" src="js/script.js"></script>--->
+    
+<!-- fromsubmit -->
+<script type="text/javascript">
+	
+    $(document).ready(function(){
+	
+	$("#student_no_error").hide();
+	$("#student_name_error").hide();
+	$("#contact_email_error").hide();
+	$("#contact_no_error").hide();
+	
+	var error_studentno = false;
+	var error_studentname = false;
+	var error_contactemail = false;
+	var error_contactno = false;
+   
+    //function to check existing records
+    /*function check_userrecord()
+       { 
+
+       	    var studentno = $('#student_no').val();
+       	    //$('#student_no').val("");
+            $('#student_name').val("");
+            $('#contact_email').val("");
+            $('#contact_no').val("");
+               
+       	    //alert(studentno);
+            $.ajax({
+          	type:"POST",
+          	url: "userrecord.php",
+          	data: "studentno="+studentno,
+          	datatype: "json",
+          	success: function(msg){
+          		//console.log(msg);
+          		var student =JSON.parse(msg);
+          		//$('#result').html(student.student_no_return);
+          		$('#recordsfound').html(student.recordsfound);
+               
+          		$('#student_no').val(student.student_no_return);
+                $('#student_name').val(student.student_name_return);
+                $('#contact_email').val(student.email_return);
+                $('#contact_no').val(student.contact_no_return);
+               }
+
+          });
+       } */
+
+
+       //function for sorting data
+        function sortlist()
+       { 
+       		alert('Data Sorted as per the conditions');
+            $.ajax({
+          	type:"POST",
+          	url: "../admin/sort.php",
+          	datatype: "json",
+          	success: function(msg){
+          		//console.log(msg);
+          		var x =JSON.parse(msg);
+          		$('#sortbutton').html(x.sorted);
+          		//$('#result').html(student.student_no_return);
+          		
+               }
+
+          });
+       }
+
+
+
+	//function for student no. validation
+	function check_studentno()
+			{
+		var student_nopattern = new RegExp(/^(\d){7}[dD\-'\s']{0,1}$/);
+
+		if($("#student_no").val().length ==0){
+			$("#student_no_error").html("Enter student no");
+			$("#student_no_error").show();
+			error_studentno = true;
+		}
+		else if(student_nopattern.test($("#student_no").val())) {
+			$("#student_no_error").show();
+
+			 var sno = document.getElementById("student_no").value;
+
+            $.ajax({
+                type: 'GET',
+
+                url: 'http://localhost/BDCayush/admin/checkexist.php',
+                data: {
+                    sno: sno
+                },
+                success: function(response) {
+
+                    if (response == "OK") {
+                        document.getElementById("student_no_error").innerHTML = "";
+                        document.getElementById("register-btn").disabled = false;
+                        error_studentno = false;
+                    } else {
+                        document.getElementById("student_no_error").innerHTML = "Student No. Already Exist";
+                        document.getElementById("register-btn").disabled = true;
+                       error_studentno = true;
+                    }
+                }
+
+            });
+
+		}
+		else{
+			$("#student_no_error").html("Invalid student no");
+			$("#student_no_error").show();
+			error_studentno = true;
+		}
+
+
+
+           
+			}
+
+
+	//function for student name validation
+	function check_studentname()
+	{
+		
+		var student_pattern = new RegExp(/^[a-zA-Z\-'\s]+$/);
+		if($("#student_name").val().length ==0){
+			$("#student_name_error").html("Enter student name");
+			$("#student_name_error").show();
+			error_studentname = true;
+		}
+		else if(student_pattern.test($("#student_name").val())) {
+			$("#student_name_error").hide();
+		}
+		else{
+			$("#student_name_error").html("Invalid student name");
+			$("#student_name_error").show();
+			error_studentname = true;
+		}
+
+	}
+
+	//function for email validation
+	function check_studentemail(){
+		var email_pattern = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+		if($("#contact_email").val().length ==0){
+			$("#contact_email_error").html("Enter email id");
+			$("#contact_email_error").show();
+			error_contactemail = true;
+		}
+		else if(email_pattern.test($("#contact_email").val())) {
+			$("#contact_email_error").hide();
+		}
+		else{
+			$("#contact_email_error").html("Invalid Email Id");
+			$("#contact_email_error").show();
+			error_contactemail = true;
+		}
+
+	}
+
+	//function check for existing student no.
+	/*function checkexist(){
+
+
+            var sno = document.getElementById("student_no").value;
+
+            $.ajax({
+                type: 'GET',
+
+                url: 'http://localhost/BDCayush/admin/checkexist.php',
+                data: {
+                    sno: sno
+                },
+                success: function(response) {
+
+                    if (response == "OK") {
+                        document.getElementById("student_no_error").innerHTML = "";
+                        document.getElementById("register-btn").disabled = false;
+                        return true;
+                    } else {
+                        document.getElementById("student_no_error").innerHTML = "Student No. Already Exist";
+                        document.getElementById("register-btn").disabled = true;
+                        return false;
+                    }
+                }
+
+            });
+
+        
+	}*/
+
+	//function for contact no validation
+	function check_contactno(){
+		var contact_pattern = new RegExp(/^(([0-9]{10,11}))$/);
+		if($("#contact_no").val().length ==0){
+			$("#contact_no_error").html("Enter contact no");
+			$("#contact_no_error").show();
+			error_contactno = true;
+		}
+		else if(contact_pattern.test($("#contact_no").val())) {
+			$("#contact_no_error").hide();
+		}
+		else{
+			$("#contact_no_error").html("Invalid Contact No");
+			$("#contact_no_error").show();
+			error_contactno = true;
+		}
+	}
+
+	$("#student_no").focusout(function() 
+		{
+			check_studentno();
+			if(error_studentno==false)
+			{
+				check_userrecord();
+			}
+		});
+
+		
+	$("#student_name").focusout(function() 
+		{
+			check_studentname();
+		});
+
+	$("#contact_email").focusout(function() 
+		{
+			check_studentemail();
+		});
+
+	$("#contact_no").focusout(function() 
+		{
+			check_contactno();
+		});
+    
+    $("#sortbutton").click(function() 
+		{
+			sortlist();
+		});
+    $("#register-btn").click(function() 
+		{
+			formsubmit();
+		});
+
+
+
+	 function formsubmit()
+        {
+           
+        error_studentno = false;
+	  	error_studentname = false;
+	  	error_contactemail = false;
+	  	error_contactno = false;
+
+		check_studentno();
+		check_studentname();
+		check_studentemail();
+		check_contactno();
+
+		if(error_studentno==false && error_studentname==false && error_contactemail==false && error_contactno==false){
+					
+           var ajaxRequest;  
+           var student_no = $('#student_no').val();
+           var student_name = $('#student_name').val();
+           var student_gender = $("input[name='gender']:checked").val();
+           var student_year = $('#student_year option:selected').text();
+           var student_blood = $('#student_blood option:selected').val();
+           var contact_email = $('#contact_email').val();
+           var contact_no = $('#contact_no').val();
+           var student_hosteller = $("input[name='hosteller']:checked").val();
+           
+           var queryString = "?student_no=" + student_no + "&student_name=" + student_name+ "&student_gender=" + student_gender+ "&student_year=" + student_year+ "&student_blood=" + student_blood+ "&contact_email=" + contact_email+ "&contact_no=" + contact_no + "&student_hosteller=" + student_hosteller;
+           var encodeduri = encodeURIComponent(queryString);
+           console.log(queryString);
+                  
+           try {
+            
+              ajaxRequest = new XMLHttpRequest();
+           }catch (e) {
+              
+              try {
+                 ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+              }catch (e) {
+                 try{
+                    ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                 }catch (e){
+                   
+                    
+                    return false;
+                 }
+              }
+           }
+                      ///////////////////////////////////////////////////yha POST lga kr dekho zara
+         
+           ajaxRequest.open("GET", "registration.php" + queryString, true);
+           ajaxRequest.send(null);
+
+           ajaxRequest.onreadystatechange = function()
+           {
+                 var ajaxDisplay = document.getElementById('successful');
+                 ajaxDisplay.innerHTML = ajaxRequest.responseText;
+                $('#registration_form').html(" ");
+                $('.modal-footer').html(" ");
+                // alert(ajaxRequest.responseText);
+               }
+             
+           }
+            else 
+		    {
+			//return false;
+     		}
+
+       }
+
+           
+       });
+ 
+</script>
+
+
+
+<style>
+	.nav-tabs { border-bottom: 2px solid #DDD; }
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+    .nav-tabs > li > a { border: none; color: #fff; }
+        .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #f53753 !important; background: transparent; }
+        .nav-tabs > li > a::after { content: ""; background: #f53753; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+    .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+.tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+.tab-pane { padding: 15px 0; }
+.tab-content{padding:20px}
+
+.card { margin-bottom: 20px; }
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    color: #555;
+    cursor: default;
+    background-color: transparent !important;
+    border-bottom-color: transparent;
+}
+
+.btn-default:hover {
+    color: #525252;
+    background-color:#fff;
+    border-color: #adadad;
+    
+}
+body > section, .footer {
+    padding: 70px 0;
+    background-color: #525252;
+}
+
+</style>
+
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+								
+	<div class="banner" id="home" >
+
+<!-- navbar	 -->
+
+	<div class="container-fluid">
+					<div class="navbar navbar-fixed-top" style=" padding: 2vh 2vw;" id="navigation">
+					  <div class="navbar-header">
+					    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navmob" style="float: right; ">
+					      <span class="icon-bar" style="background-color: black;"></span>
+					      <span class="icon-bar" style="background-color: black;"></span>
+					      <span class="icon-bar" style="background-color: black;"></span>
+					    </button>
+					    <a class="navbar-brand" href="#" style="font-weight:400;font-size:18px; letter-spacing: 2px; color:#f53753; ">AJAY KUMAR GARG ENGINEERING COLLEGE</a>
+					  </div>
+					  <div class="navbar-collapse collapse navbar-right" id="navmob" style="float: right;">
+					    <ul class="nav navbar-nav navbar-right" style="margin-right:30px; letter-spacing: 2px; color: black;">
+							<li class="active"><a href="#home" style="font-size:16px;">Home</a></li>
+					      	<li><a href="#facts" style="font-size:16px;">Facts</a></li> 
+							<li><a href="#timeline" style=" font-size:16px;">Timeline</a></li>
+							<li><a href="#gallery" style="font-size:16px;">Gallery</a></li> 
+							<li><a href="#team" style="font-size:16px;">Team</a></li> 
+						</ul>
+					  </div>
+					</div>   
+						
+				</div>
+<!-- navbar end -->
+
+				<div class="clearfix"></div>
+		`<div class="container" id="bdccont" style="padding-top: 20vh;" >	
+			<img src="images/heart.svg" width="50%" style="position: absolute; margin-left: auto; margin-right: auto; left: 0; right: 0;" id="svg">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+					<div class="w3l_banner_info">
+									
+									<h4>BLOOD DONATION CAMP</h4>
+									<p>1ST MARCH 2017</p>
+									<h5>MECHANICAL BLOCK</h5>
+									<button class="btn btn-5 btn-5a icon-heart" data-toggle="modal" data-target="#register"><span>DONATE</span></button>
+									
+										
+									
+																			
+					</div>	
+				</div>
+				<div class="col-lg-3">
+				</div>
+			</div>
+		</div>	
+
+
+									<!-- Modal -->
+
+				<div id="register" class="modal fade" role="dialog">
+				 <div class="modal-dialog">
+
+				   <!-- Modal content-->
+				   <div class="modal-content">
+				     <div class="modal-header" style="background-color:#f53753;">
+				       <button type="button" style="color: white;" class="close" data-dismiss="modal">&times;</button>
+				       <h3 class="modal-title text-center" style="color: #fff; letter-spacing: 3px;">REGISTER YOURSELF</h3>
+				     </div>
+				     <div class="modal-body" id="testreg">
+				    
+				           
+							<form class="form-horizontal" id="registration_form">
+								<!--<div id="recordsfound" style="color:red;">Type In Your Student No:</div>-->
+
+							 <div class="form-group text-left">
+							    <label class="control-label col-sm-4" for="student_no">Student Number:</label>
+							    <div class="col-sm-6"> 
+							      <input type="text" class="form-control" id="student_no" name="studentno" placeholder="Enter Student No." >
+							    <span id="student_no_error"></span>
+							    </div>
+							    
+							  </div> 
+
+							  <div class="form-group">
+							    <label class="control-label col-sm-4 text-left" for="student_name">Name:</label>
+							    <div class="col-sm-6">
+							      <input type="name" class="form-control" id="student_name" name="name" placeholder="Enter Name">
+							    <span id="student_name_error"></span>
+							    </div>
+							    
+							  </div>
+
+							 
+
+
+							<div class="form-group">
+							<label class="control-label col-sm-4" for="student_year">Year:</label>
+							  <div class="col-sm-6"> 
+							  <select class="form-control" id="student_year" name="year">
+							    <option value="1">1</option>
+							    <option value="2">2</option>
+							    <option value="3">3</option>
+							    <option value="4">4</option>
+							  </select>
+							  </div>
+							</div>
+
+							<div class="form-group">
+							<label class="control-label col-sm-4" for="student_blood">Blood Group:</label>
+							  <div class="col-sm-6">
+							  <select class="form-control" id="student_blood" name="bloodgroup">
+							   		<option value="Ap">A+</option>
+					 				<option value="An">A-</option>
+					  				<option value="ABp">AB+</option>
+					  				<option value="ABn">AB-</option>
+					  				<option value="Bp">B+</option>
+					  				<option value="Bn">B-</option>
+					  				<option value="Op">O+</option>
+					  				<option value="On">O-</option>
+					  				<option value="NA">Don't Know</option>
+							 </select>
+							  </div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-4" for="student_gender">Gender:</label>
+								<div class="col-sm-6 radio">
+									<label class="radio-inline">
+								      <input type="radio" name="gender" id="student_gender" value="male" checked>Male
+								    </label>
+								    <label class="radio-inline" style="margin-left:36.2%;">
+								      <input type="radio" name="gender" value="female">Female
+								    </label>
+								</div>
+							  </div>
+
+
+							<div class="form-group">
+							    <label class="control-label col-sm-4 text-left" for="contact_email">Email ID:</label>
+							    <div class="col-sm-6"> 
+							      <input type="email" class="form-control" id="contact_email" placeholder="Enter Email" name="email">
+							      <span id="contact_email_error"></span>	
+							    </div>
+							  </div>
+
+							  <div class="form-group">
+							    <label class="control-label col-sm-4" for="contact_no">Contact No:</label>
+							    <div class="col-sm-6"> 
+							      <input type="number" class="form-control" id="contact_no" placeholder="Enter Contact No." name="contactno" maxlength="11">
+							    <span id="contact_no_error"></span>	
+							    </div>
+							  </div> 
+							 
+								<div class="col-sm-6 col-sm-offset-4 radio">
+								  <label class="radio-inline">
+								      <input type="radio" name="hosteller" checked value="1" id="student_hosteller">Hosteller
+								    </label>
+								    <label class="radio-inline" style="">
+								      <input type="radio" name="hosteller" value="0" id="student_hosteller">Day Scholar
+								    </label>
+							  	</div>
+				               						    </form>
+
+				               <div class="text-center" id="successful" style="color:grey; font-size: 1.5em;">
+				               </div>
+
+				     <!-- body end -->
+				             <div class="modal-footer text-center">
+				             	<div class="text-center">
+						          <input type="button" name="submit" onsubmit="checkexist();" class="btn" value="Register" id="register-btn" style="padding: 10px 30px 10px 30px !important; background-color: #f53753 !important;border-radius:0px;" ></input>
+						        </div>  
+						      </div>    
+						    </div>
+						 </div>
+					 </div>
+				   </div>
+
+									<!-- Modal 2-->
+					
+	</div>
+
+<!-- //banner -->	
+
+
+ <!-- services -->
+<div class="service container-fluid" id="facts">
+   
+    
+     	<div class="row services-gds agile-info" style="margin-right: 0px; margin-left: 0px;">
+			<div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 list-gds text-center">
+				<span class="glyphicon glyphicon-time icon" aria-hidden="true"></span>
+				<h4>MYTH</h4>
+				<p>I will gain weight by donating blood.<br><br>
+
+						If I donate blood I am susceptible to contact diseases like HIV.<br><br>
+
+						I suffer from diabetes, I cannot donate blood.<br><br>
+
+						I'm too young or too old.</p>
+			</div>
+			<div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 list-gds text-center">
+				<span class="glyphicon glyphicon-ok icon" aria-hidden="true"></span>
+				<h4>FACTS</h4>
+				<p>People of our country requires 5 crore units of blood every year.<br><br>
+
+						And only 80 lakh units are donated in a year.<br><br>
+
+						Every 2 seconds someone needs blood.<br><br>
+
+						There is no substitute for human blood.</p>
+			</div>
+			<div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 list-gds text-center" style="">
+				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+				<h4>FUTURE</h4>
+				<p>A day should come when the necessity of such camps end.<br><br>
+
+						The quantity of donated blood must rise to 5 crore units from meagre 80 lakh.<br><br>
+
+						Thalassemia patients should stop worrying about their type of blood.</p>	
+			</div>
+				
+
+					
+		</div>
+        
+	 
+  </div>
+	<!-- //services -->
+
+
+	<!-- ======================= tabs ===================================== -->
+
+	    <!-- Header -->
+    <section>
+        <div class="text-vertical-center">
+            
+            
+            
+             
+
+        <div class="row" style="margin-right:0px; margin-left:0px;">
+            <div class="col-md-8 col-sm-8 col-lg-8 col-md-offset-2 col-lg-offset-2 col-sm-offset-2" style="margin-top:30px;">
+            <!-- Nav tabs --><div class="card">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active text-center" style="width:25%;color:#fff; font-family: 'Open Sans', sans-serif; font-size:21px;"><a href="#ric" aria-controls="cases"  role="tab" data-toggle="tab">Ric Martin</a></li>
+                                        <li role="presentation" class="text-center" style="width:25%;color:#fff; font-family: 'Open Sans', sans-serif; font-size:21px;"><a href="#social" aria-controls="" role="tab" data-toggle="tab">Social Awareness</a></li>
+                                        <li role="presentation" class="text-center" style="width:25%;color:#fff; font-family: 'Open Sans', sans-serif; font-size:21px;"><a href="#tathya" aria-controls="act" role="tab" data-toggle="tab">Tathya</a></li>
+                                        <li role="presentation" class="text-center" style="width:25%;color:#fff; font-family: 'Open Sans', sans-serif; font-size:21px;"><a href="#mythos" aria-controls="act" role="tab" data-toggle="tab">Mythos</a></li>
+                                        
+                                    </ul>
+                                 
+                             </div>
+                                <!-- Tab panes -->
+                                <div class="tab-content card" style="line-height: 28px;">
+                                                
+                                                <div role="tabpanel" class="tab-pane active" id="ric">
+                                                <a href="#case-modal" data-toggle="modal" style="text-decoration:none; color:#525252;">
+                                                <h3 class="text-center" style="color:#f53753;  font-family: 'Open Sans', sans-serif; font-weight:600 !important; margin-bottom:30px;font-size:25px;">RIC MARTIN, THE “WALKING TALKING PLATELET FACTORY”</h3>
+                                                <p style="font-family: 'Open Sans', sans-serif; font-size:15px; color:#fff; letter-spacing: 1px;">
+                                               		I first began donating whole blood when I turned 21 in 1973 with the American Red Cross and I gave about two gallons of whole blood there before I started donating with the local agency, Inova, in ‘76. Back then Inova’s operation was a tiny room in the basement of Fairfax Hospital. I remember that the room was rather small and anyone over 5’10“ would have to crunch up a little to allow the phlebotomist to squeeze past the beds.<br><br>
+
+													It makes me very proud; we have been able to bond over the experience. I get to see her every time she donates and I can see her doing the math in her head of what/when she “thinks” she could over take my record.
+                                               	</p></a>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane" id="social" style="margin-bottom:40px;">
+                                                <a href="#case-modal" data-toggle="modal" style="text-decoration:none; color:#525252;">
+                                                <h3 class="text-center" style="color:#f53753;  font-family: 'Open Sans', sans-serif; font-weight:600 !important; margin-bottom:30px;font-size:25px;">SOCIAL AWARENESS</h3>
+                                                <p style="font-family: 'Open Sans', sans-serif; font-size:15px;color:#fff; letter-spacing: 1px;">
+                                                One single donation can be split into three separate parts, helping save or improve the lives of patients. Just three teaspoons of blood can save the life of a premature baby. If you donate blood, you can help in saving lives of many patients.<br><br>
+
+												It is a good idea to check the safety and hygiene standards of the local camps before you sign up. “Make sure that the vials and syringes being used are new and they are not reusing their syringes,” The attendants and doctors should be wearing gloves while handling the blood and should dispose of syringes and testing plates immediately after use.</p></a>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane" id="tathya">
+                                                <a href="#case-modal" data-toggle="modal" style="text-decoration:none; color:#525252;">
+                                                <h3 class="text-center" style="color:#f53753;  font-family: 'Open Sans', sans-serif; font-weight:600 !important; margin-bottom:30px;font-size:25px;">TATHYA</h3>
+                                                <p style="font-family: 'Open Sans', sans-serif; font-size:15px;color:#fff; letter-spacing: 1px;">
+                                                The average red blood cell transfusion is approximately 3 pints.<br><br>
+
+												More than 1 million new people are diagnosed with cancer each year. Many of them will need blood, sometimes daily, during their chemotherapy treatment.<br><br>
+
+												Healthy donor may donate red blood cells every 56 days, or double red cells every 112 days.<br><br>
+
+												If you began donating blood at age 18 and donated every 90 days until you reached 60, you would have donated 30 gallons of blood, potentially helping save more than 500 lives!</p></a>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane" id="mythos">
+                                                <a href="#case-modal" data-toggle="modal" style="text-decoration:none; color:#525252;">
+                                                <h3 class="text-center" style="color:#f53753;  font-family: 'Open Sans', sans-serif; font-weight:600 !important; margin-bottom:30px;font-size:25px;">MYTHOS</h3>
+                                                <p style="font-family: 'Open Sans', sans-serif; font-size:15px;color:#fff;letter-spacing: 1px;">
+                                                Blood donation will take a lot of time.<br><br>
+
+												People with infections, high cholesterol, diabetes or hypertension cannot donate blood.<br><br>
+
+												I have already donated blood once this year, I can’t donate again.<br><br>
+
+												If I donate blood I am susceptible to contract diseases like HIV.<br><br>
+
+												I suffer from diabetes, I cannot donate blood.</p></a>
+                                                </div>
+                                                
+                                </div>
+                                        
+            </div>
+    </div>
+
+           
+            
+        </div>
+  </section>
+
+ <!-- timeline -->
+ <!-- timeline -->
+<div class="service container-fluid" id="timeline">
+		<H1 class="text-center" style="padding-top: 7vh; color: #f53753;  font-size: 1.8em;  text-transform: uppercase;  letter-spacing: 5px;">HOW IT WORKS</H1>
+    
+     	<div class="row services-gds agile-info" style="margin-right: 0px; margin-left: 0px;">
+			<div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 list-gds text-center" style="">
+				<span class="glyphicon glyphicon-user icon" aria-hidden="true"></span>
+				<h4>STEP 1</h4>
+				<h5 style="margin-bottom:20px;">Register yourself by logging at akgec.in/bdc17</h5>
+				<img src="images/step1.svg" class="img-responsive" style="max-width: 72% !important; margin:0 auto; margin-bottom: 1.8px;">
+			</div>
+			<div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 list-gds text-center" style="">
+				<span class="glyphicon glyphicon-phone icon" aria-hidden="true"></span>
+				<h4>STEP 2</h4>
+				<h5 style="margin-bottom:20px;">Check your slot as sent on your Mobile Number</h5>
+				<img src="images/step2.svg" class="img-responsive" style="max-width: 72% !important; margin:0 auto;">
+			</div>
+			<div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 list-gds text-center" style="">
+				<span class="glyphicon glyphicon-tint icon" aria-hidden="true"></span>
+				<h4>STEP 3</h4>
+				<h5 style="margin-bottom:20px;">Reach ME Block on 1<sup>st</sup> March and donate</h5>
+				<img src="images/step3.svg" class="img-responsive" style="max-width: 72% !important; margin:0 auto;">
+			</div>
+				
+
+					
+		</div>
+        
+	 
+  </div>
+	<!-- //timeline -->
+
+
+ <!-- =========================== GALLERY ================================= -->
+<SECTION >	
+			<div class="slider">
+					<div class="callbacks_container" id="gallery" style="padding-bottom:60px;">
+						<ul class="rslides" id="slider3">
+							<li>
+								<img src="images/director.jpg" alt="">
+							</li>
+							<li>
+								<img src="images/kartik.jpg" alt="">
+							</li>
+							<li>
+								<img src="images/satvik.jpg" alt="">
+							</li>
+							<li>
+								<img src="images/random.jpg" alt="">
+							</li>
+						</ul>
+						
+					</div>
+				</div>
+		
+</SECTION>
+
+		 <!-- /GALLERY -->
+
+
+<section style="padding-bottom: 28px !important;background-color: #525252;" id="team" >
+
+<!-- ==================================== CONVENORS ========================================= -->
+
+
+	<p style="font-weight:900; margin-left:1%;font-size:34px;margin-bottom: -10px;letter-spacing: 2px;margin-top: 34px;color:#f53753;">CONVENORS</p>
+  <div class="content-bottoms">
+		 <div class="content-in">
+            <div class="port effect-1">
+                <div class="image-box">
+                   <img src="images/parashar.png" alt="" class="img-responsive">
+               </div>
+                <div class="text-desc">
+                    <p style="font-size:17px;font-weight:700;line-height: 24px !important;">V.K.<br>PARASHAR</p><br>
+                    <p style="line-height: 19px !important;">ORGANISING <br>HEAD</p>
+                </div>
+           </div>
+         </div>
+         <div class="content-in">
+            <div class="port effect-1">
+                <div class="image-box">
+                   <img src="images/pranav.png" alt="" class="img-responsive">
+               </div>
+                <div class="text-desc">
+                    <p style="font-size:17px;font-weight:700;line-height: 24px !important;">PRANAV<br>CHAUDHARY</p><br>
+                    <p style="line-height: 19px !important;">Web and Graphic Designer, SDC</p>
+                </div>
+           </div>
+         </div>
+         <div class="content-in">
+            <div class="port effect-1">
+                <div class="image-box">
+                   <img src="images/madhvi.png" alt="" class="img-responsive">
+               </div>
+                <div class="text-desc">
+                    <p style="font-size:17px;font-weight:700;line-height: 24px !important;">MADHVI<br>SHUKLA</p><br>
+                    <p style="line-height: 19px !important;"></p>
+                </div>
+           </div>
+         </div>
+         <div class="content-in">
+            <div class="port effect-1">
+                <div class="image-box">
+                   <img src="images/harshit.png" alt="" class="img-responsive">
+               </div>
+                <div class="text-desc">
+                    <p style="font-size:17px;font-weight:700;line-height: 24px !important;">HARSHIT<br>AGGARWAL</p><br>
+                    <p style="line-height: 19px !important;"></p>
+                </div>
+           </div>
+         </div>
+         <div class="content-in">
+            <div class="port effect-1">
+                <div class="image-box">
+                   <img src="images/atishay.png" alt="" class="img-responsive">
+               </div>
+                <div class="text-desc">
+                    <p style="font-size:17px;font-weight:700;line-height: 24px !important;">ATISHAY YADAV<br></p><br>
+                    <p style="line-height: 19px !important;"></p>
+                </div>
+           </div>
+
+         </div>
+        <div class="clearfix"> </div>
+
+  <!-- ================================= TEAM ============================================ -->
+
+	<p style="font-weight:900; margin-left:1%;font-size:34px;margin-bottom: -10px;letter-spacing: 2px;color:#fff;">WEB TEAM</p>
+  <div class="content-bottoms">
+   		   <div class="content-in">
+            <div class="port effect-1">
+                <div class="image-box">
+                   <img src="images/kunal.png" alt="" class="img-responsive">
+               </div>
+                <div class="text-desc">
+                    <p style="font-size:17px;font-weight:700;line-height: 24px !important;">KUNAL<br>CHAUDHARY</p><br>
+                    <p style="line-height: 19px !important;">Web and Graphic Designer, SDC</p>
+                </div>
+           </div>
+         </div>
+		 <div class="content-in">
+            <div class="port effect-1">
+                <div class="image-box">
+                   <img src="images/akash.png" alt="" class="img-responsive">
+               </div>
+                <div class="text-desc">
+                    <p style="font-size:17px;font-weight:700;line-height: 24px !important;">AKASH<br>KOOL</p><br>
+                    <p style="line-height: 19px !important;">Web Developer, SDC</p>
+                </div>
+           </div>
+         </div>
+        
+        <div class="content-in">
+            <div class="port effect-1">
+                <div class="image-box">
+                   <img src="images/ayush.jpg" alt="" class="img-responsive">
+               </div>
+                <div class="text-desc">
+                    <p style="font-size:17px;font-weight:700;line-height: 24px !important;">AYUSH<br>SINGH</p><br>
+                    <p style="line-height: 19px !important;">Web and Graphic Designer, SDC</p>
+                </div>
+           </div>
+         </div>
+         <div class="content-in">
+            <div class="port effect-1">
+                <div class="image-box">
+                   <img src="images/mayur.jpeg" alt="" class="img-responsive">
+               </div>
+                <div class="text-desc">
+                    <p style="font-size:17px;font-weight:700;line-height: 24px !important;">MAYUR<br>PATHAK</p><br>
+                    <p style="line-height: 19px !important;">Web Developer,<br> SDC</p>
+                </div>
+           </div>
+         </div>
+         <div class="content-in">
+            <div class="port effect-1">
+                <div class="image-box">
+                   <img src="images/dusk.jpg" alt="" class="img-responsive">
+               </div>
+                <div class="text-desc">
+                    <p style="font-size:17px;font-weight:700;line-height: 24px !important;">SAURABH<br>VERMA</p><br>
+                    <p style="line-height: 19px !important;">Web Developer,<br> SDC</p>
+                </div>
+           </div>
+         </div>
+         
+
+
+
+
+         
+        <div class="clearfix"> </div>
+</div>
+
+
+
+
+<!-- ========================================CONVENORS END ========================================== -->
+</div>
+<div id="footer" class="container" style="margin-top:30px;">
+	<hr/>
+	<div class="row" style="margin-bottom:-30px;">
+		<div class="col-xs-12 col-sm-6">
+			SITE DONATED BY <a href="http://silive.in/" style="color:#f53753;font-weight:600;">SOFTWARE INCUBATOR&nbsp;
+			<img src="images/SIlogo.png" width="20vw"></a>
+		</div>
+		<div class="col-xs-12 col-sm-6">
+		<a href="http://akgec.in/" style="float: right;">
+			<img src="images/AKGEC.png" width="20vw">&nbsp;
+			AKGEC</a>
+		</div>	
+	</div>
+	<br>
+
+</div>
+</section>
+
+
+
+
+	
+<!-- for bootstrap working -->
+<!-- js -->
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+<script type="text/javascript">
+	$(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+    var os = $('#home').offset().top;
+    var ht = $('#home').height();
+    if(scroll > os + ht){
+        $('#navigation').addClass('navbar-inverse');
+        $('#navigation').css('transition', '0.5s');
+        $('.icon-bar').css("background-color", "white");
+    }
+    else
+        $('#navigation').removeClass('navbar-inverse');
+        $('.icon-bar').css("background-color", "black");
+
+});
+</script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<!-- //js -->
+<script>
+					$('ul.nav li.dropdown').hover(function() {
+ 						 $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+							}, function() {
+  								$(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+							});
+				</script>	
+					<!--banner Slider starts Here-->
+						<script src="js/responsiveslides.min.js"></script>
+							<script>
+								// You can also use "$(window).load(function() {"
+								$(function () {
+								  // Slideshow 4
+								  $("#slider3").responsiveSlides({
+									auto: true,
+									pager:true,
+									nav:false,
+									speed: 500,
+									namespace: "callbacks",
+									before: function () {
+									  $('.events').append("<li>before event fired.</li>");
+									},
+									after: function () {
+									  $('.events').append("<li>after event fired.</li>");
+									}
+								  });
+							
+								});
+							 </script>
+
+							<!--banner Slider starts Here-->
+	<script>
+								// You can also use "$(window).load(function() {"
+								$(function () {
+								  // Slideshow 4
+								  $("#slider4").responsiveSlides({
+									auto: true,
+									pager:false,
+									nav:true,
+									speed: 500,
+									namespace: "callbacks",
+									before: function () {
+									  $('.events').append("<li>before event fired.</li>");
+									},
+									after: function () {
+									  $('.events').append("<li>after event fired.</li>");
+									}
+								  });
+							
+								});
+							 </script>
+
+
+<!-- SMOOTH SCROLLING  -->
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>
+
+
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+	<script src="js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+</body>
+</html>
