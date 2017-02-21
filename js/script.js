@@ -45,7 +45,7 @@ $(document).ready(function(){
        //function for sorting data
         function sortlist()
        { 
-       		alert('Data Sorted as per the conditions');
+       		
             $.ajax({
           	type:"POST",
           	url: "../admin/sort.php",

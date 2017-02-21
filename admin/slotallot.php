@@ -50,7 +50,7 @@ $to_time= $row2['to_time'];
 
 $diff = $to_time - $from_time;
 $diff_min= $diff * 60;
-echo $diff_min;
+//echo $diff_min;
 $slot_length_min= $diff_min/ $row2['no_of_slots'];
 $time_to_allot="";
 
@@ -97,4 +97,6 @@ if(mysqli_num_rows($res))
 				echo $slotnotallotted;
 			}
  	}
+
+  header("Refresh:3;url=http://localhost/BDCayush/admin/admin.php");
 ?>
