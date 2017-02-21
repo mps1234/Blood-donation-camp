@@ -36,6 +36,39 @@ if(isset($_POST['export_excel_slot']))
            		 else
             	$h= "No"; 
 
+
+            	switch ($b = $row['blood_group']) {
+            		case 'Ap':
+            			$blood = 'A+';
+            			break;
+            		case 'An':
+            			$blood = 'A-';
+            			break;
+            		case 'ABp':
+            			$blood = 'AB+';
+            			break;
+            		case 'ABn':
+            			$blood = 'AB-';
+            			break;
+            		case 'Bp':
+            			$blood = 'B+';
+            			break;
+            		case 'Bn':
+            			$blood = 'B-';
+            			break;
+            		case 'Op':
+            			$blood = 'O+';
+            			break;
+            		case 'On':
+            			$blood = 'O-';
+            			break;
+            		case 'NA':
+            			$blood = 'NA';
+            		default:
+            			$blood = $row['blood_group'];
+            			break;
+            	}
+
 			$output.= '
 			
 				<tr>
@@ -43,7 +76,7 @@ if(isset($_POST['export_excel_slot']))
 					<td>'.$row["name"].'</td>
 					<td>'.$row["gender"].'</td>	
 					<td>'.$row["year"].'</td>
-					<td>'.$row["blood_group"].'</td>
+					<td>'.$blood.'</td>
 					<td>'.$row["email"].'</td>
 					<td>'.$row["contact_no"].'</td>
 					<td>'.$h.'</td>

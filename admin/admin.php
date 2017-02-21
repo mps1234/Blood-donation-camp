@@ -2,7 +2,7 @@
 session_start();
 
 if(!isset($_SESSION["sess_user"])){
-  header("Location:http://http://www.akgec.in/bdc17/admin/index.php");
+  header("Location:http://www.akgec.in/bdc17/admin/index.php");
 }
 else{
 
