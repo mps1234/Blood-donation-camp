@@ -58,6 +58,6 @@ $res4= mysqli_query($con,$qry4);
  	}
  }
 
- header('Refresh:2;url="http:localhost/BDCayush/admin/admin.php"');
+ header('Refresh:2;url="http://www.akgec.in/bdc17/admin/admin.php"');
 
 ?>

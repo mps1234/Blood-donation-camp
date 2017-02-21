@@ -2,7 +2,7 @@
 session_start();
 include('../includes/dbconnect.php');
 if(isset($_SESSION["sess_user"])){
-  header("Location:http://localhost/BDC/admin/admin.php");
+  header("Location:http://http://www.akgec.in/bdc17/admin/admin.php");
 }
 else{
 
@@ -74,7 +74,7 @@ else{
 						$_SESSION['sess_user']=$Name;
 
 						/* Redirect browser */
-						header("Location: http://localhost/BDC/admin/admin.php");
+						header("Location: http://www.akgec.in/bdc17/admin/admin.php");
 					}
 					} else {
 				echo "Invalid username or password!";

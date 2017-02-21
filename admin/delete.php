@@ -31,5 +31,5 @@ include('../includes/dbconnect.php');
 			}
 	}
 
-	 header('Refresh:2;url=/BDCayush/admin/admin.php');
+	 header('Refresh:2;url=http://www.akgec.in/bdc17/admin/admin.php');
 ?>

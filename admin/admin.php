@@ -2,7 +2,7 @@
 session_start();
 
 if(!isset($_SESSION["sess_user"])){
-  header("Location:http://localhost/BDC/admin/index.php");
+  header("Location:http://http://www.akgec.in/bdc17/admin/index.php");
 }
 else{
 
@@ -118,11 +118,11 @@ else{
 		<h4>Enter the following details to allot slots :</h4>
 	</div>
 
-	<div class="col-md-4 col-sm-4"><form method="POST" action="http://localhost/BDC/admin/excel.php"><input type="submit" name="export_excel" value="Export Registration Data to Excel" class="btn btn-primary btn-lg"></form></div>
+	<div class="col-md-4 col-sm-4"><form method="POST" action="http://www.akgec.in/bdc17/admin/excel.php"><input type="submit" name="export_excel" value="Export Registration Data to Excel" class="btn btn-primary btn-lg"></form></div>
 
-	<div class="col-md-3 col-sm-3"><form method="POST" action="http://localhost/BDC/admin/excelslot.php"><input type="submit" name="export_excel_slot" value="Export Slot Data to Excel" class="btn btn-primary btn-lg"></form></div>
+	<div class="col-md-3 col-sm-3"><form method="POST" action="http://www.akgec.in/bdc17/admin/excelslot.php"><input type="submit" name="export_excel_slot" value="Export Slot Data to Excel" class="btn btn-primary btn-lg"></form></div>
 
-	<div class="col-md-1 col-sm-1"><a href="http://localhost/BDC/admin/logout.php" class="btn btn-danger">Logout</a></div>
+	<div class="col-md-1 col-sm-1"><a href="http://www.akgec.in/bdc17/admin/logout.php" class="btn btn-danger">Logout</a></div>
 
 </div>
 
@@ -175,7 +175,7 @@ else{
 	
 	<div class="row">
 		<div class="col-md-6">
-			<form action="http://localhost/BDCayush/admin/delete.php" method="POST">
+			<form action="http://www.akgec.in/bdc17/admin/delete.php" method="POST">
 				<input type="submit" name="deletesorted" value="DELETE SORTED DATA" class="btn btn-primary" Onclick="ConfirmDelete()">
 				<input type="submit" name="deleteslots" value="DELETE SLOT DATA" class="btn btn-primary" Onclick="ConfirmDelete()">
 				<input type="submit" name="deleteinfo" value="DELETE SLOT INFO" class="btn btn-primary" Onclick="ConfirmDelete()">
@@ -208,7 +208,7 @@ else{
 	<div class="col-md-3"></div>
 
 	<div class="col-md-9">
-		<a href="http://localhost/BDC/admin/slotallot.php" class="btn btn-primary" id="sortbutton">Allot Slots</a>
+		<a href="http://www.akgec.in/bdc17/admin/slotallot.php" class="btn btn-primary" id="sortbutton">Allot Slots</a>
 	</div>
 </div><br>
 

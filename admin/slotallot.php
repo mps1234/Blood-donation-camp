@@ -98,5 +98,5 @@ if(mysqli_num_rows($res))
 			}
  	}
 
-  header("Refresh:3;url=http://localhost/BDCayush/admin/admin.php");
+  header("Refresh:3;url=http://www.akgec.in/bdc17/admin/admin.php");
 ?>
