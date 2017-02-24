@@ -101,7 +101,7 @@ if(isset($_POST['export_excel_slot']))
 		}
 		else 
            {
-           	echo 'No Slot HAve Yet BEEN Given';
+           	echo 'No Slots Given';
 			header('refresh: 3; url=http://www.akgec.in/bdc17/admin/admin.php');
 		}
 }

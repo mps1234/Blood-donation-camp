@@ -11,7 +11,7 @@ $(document).ready(function(){
 	var error_contactno = false;
    
     //function to check existing records
-    /*function check_userrecord()
+    function check_userrecord()
        { 
 
        	    var studentno = $('#student_no').val();
@@ -39,21 +39,21 @@ $(document).ready(function(){
                }
 
           });
-       } */
+       } 
 
 
        //function for sorting data
         function sortlist()
        { 
-       		
+       		alert('Data Sorted as per the conditions');
             $.ajax({
           	type:"POST",
           	url: "../admin/sort.php",
           	datatype: "json",
           	success: function(msg){
           		//console.log(msg);
-          		//var x =JSON.parse(msg);
-          		//$('#sortbutton').html(x.sorted);
+          		var x =JSON.parse(msg);
+          		$('#sortbutton').html(x.sorted);
           		//$('#result').html(student.student_no_return);
           		
                }
